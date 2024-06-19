@@ -1,14 +1,14 @@
 document.getElementById('login-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const username = document.getElementById('username').value;
-    const senha = document.getElementById('password').value;
+    const senha = document.getElementById('senha').value;
 
     const response = await fetch('/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ username, password: senha })
     });
 
     const data = await response.json();
