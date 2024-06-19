@@ -3,19 +3,21 @@ body, html {
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
+    background-color: #202020;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-/* Container do login */
+
 #login-container {
-    background-color: #ffffff;
+    background-color: #202020;
+    border: 2px solid white;
+    backdrop-filter: blur(10px);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 50px;
     width: 100%;
     max-width: 400px;
     text-align: center;
@@ -24,10 +26,10 @@ body, html {
 #login-container h2 {
     margin-bottom: 20px;
     font-size: 24px;
-    color: #333;
+    color: white;
 }
 
-/* Formulário de login */
+
 #login-form {
     display: flex;
     flex-direction: column;
@@ -37,21 +39,25 @@ body, html {
     text-align: left;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #555;
+    color: White;
+    
 }
 
 #login-form input {
     margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ddd;
+    padding: 15px;
+    border: 1px solid white;
     border-radius: 4px;
     font-size: 16px;
+    background-color: #525252;
+    color: white;
 }
 
 #login-form button {
-    padding: 10px;
-    background-color: #007bff;
-    border: none;
+    padding: 15px;
+    margin-top: 10px;
+    background-color: #202020;
+    border: 1px solid white;
     border-radius: 4px;
     color: white;
     font-size: 16px;
@@ -60,11 +66,12 @@ body, html {
 }
 
 #login-form button:hover {
-    background-color: #0056b3;
+    background-color: #b98412;
+    border: 2px solid white;
 }
 
-/* Mensagem de erro */
+
 #error-message {
-    color: #d9534f;
-    margin-top: 10px;
+    color: White;
+    margin-top: 15px;
 }
