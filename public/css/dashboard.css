@@ -8,14 +8,15 @@ body {
 header {
     background-color: #333;
     padding: 10px 20px;
-    display: flex;
 }
 
 .navbar {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 .navbar-brand {
@@ -25,12 +26,17 @@ header {
     font-weight: bold;
 }
 
+.navbar-menu-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
 .navbar-menu {
     list-style: none;
     display: flex;
     margin: 0;
     padding: 0;
-    text-align: center;
 }
 
 .navbar-item {
@@ -42,12 +48,10 @@ header {
     text-decoration: none;
     padding: 10px 15px;
     display: block;
-    
 }
 
 .navbar-item a:hover {
     background-color: #575757;
-    border-radius: 5px;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -63,8 +67,6 @@ header {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     min-width: 150px;
     z-index: 1;
-    text-align: center;
-    
 }
 
 .dropdown-item a {
@@ -72,30 +74,22 @@ header {
     padding: 10px;
     text-decoration: none;
     display: block;
-  
 }
 
 .dropdown-item a:hover {
     background-color: #575757;
-    border-radius: 5px;
-
 }
 
 .btn-sair {
+    padding: 10px 15px;
     margin-left: auto;
-    padding: 10px ;
-    text-align: right;
-
 }
 
 .btn-sair a {
     color: #fff;
     text-decoration: none;
-    padding: 10px 15px;
-    display: block;
 }
 
 .btn-sair a:hover {
     background-color: #575757;
-    border-radius: 5px;
 }
