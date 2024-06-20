@@ -1,4 +1,4 @@
-const db = require('../config/banco');
+const db = require('../config/banco.js');
 
 const Funcionario = {
     create: async (funcionario) => {

@@ -1,7 +1,8 @@
 document.getElementById('login-form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const username = document.getElementById('username').value;
-    const senha = document.getElementById('senha').value;
+    const usernameInput = document.getElementById('username');
+    const userpasswordInput = document.getElementById('password');
+    const usernameValue = usernameInput.value; 
 
     try {
         const response = await fetch('/login', {

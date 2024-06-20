@@ -1,13 +1,13 @@
-const { findByUsername } = require('../models/authModel');
+const { findByUsernameAndPassword } = require('../models/userModel');
 
 exports.login = async (req, res) => {
     try {
         const { username, password } = req.body;
 
-        const user = await findByUsername(username);
+        const user = await findByUsernameAndPassword(username, password);
 
-        if (user && user.password === password) {
-            res.redirect('/dashboard.html');
+        if (user) {
+            res.redirect('/dashboard.html'); // Redireciona se as credenciais forem válidas
         } else {
             res.status(401).json({ message: 'Credenciais inválidas ou usuário não existe' });
         }
