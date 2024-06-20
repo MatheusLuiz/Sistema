@@ -1,17 +1,19 @@
-const User = require('../models/authModel');
+const { findByUsername } = require('../models/authModel');
 
 exports.login = async (req, res) => {
     try {
         const { username, password } = req.body;
-        const user = await User.findByUsername(username);
+        const user = await findByUsername(username);
+
         if (user && user.password === password) {
-            
-            res.redirect('/dashboard'); 
+           
+            res.redirect('/dashboard');
         } else {
-            res.status(401).json({ message: 'Credenciais invalidas ou Não existem' });
+           
+            res.status(401).json({ message: 'Credenciais inválidas ou usuário não existe' });
         }
     } catch (error) {
         console.error('Erro ao autenticar usuário:', error);
-        res.status(500).json({ message: 'Erro Interno no Servidor' });
+        res.status(500).json({ message: 'Erro interno no servidor' });
     }
 };

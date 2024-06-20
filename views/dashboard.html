@@ -1,51 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="/css/dashboard.css">
-</head>
-<body>
-
-
-    <nav class="menu-lateral">
-
-        <div class="btn-expandir">
-            <i class="bi bi-list"></i>
-        </div>
-
-        <ul>
-            <li class="item-menu">
-                <a href="#">
-                    <span class="icon"><i class="bi bi-house-door"></i></span>
-                    <span class="txt-link">Home</span>
-                </a>
-            </li>
-            <li class="item-menu">
-                <a href="#">
-                    <span class="icon"><i class="bi bi-people"></i></span>
-                    <span class="txt-link">Funcionario</span>
-                </a>
-            </li>
-            <li class="item-menu">
-                <a href="#">
-                    <span class="icon"><i class="bi bi-house-gear-fill"></i></span>
-                    <span class="txt-link">Configurações</span>
-                </a>
-            </li>
-            <li class="item-menu">
-                <a href="#">
-                    <span class="icon"><i class="bi bi-gear-fill"></i></span>
-                    <span class="txt-link">Conta</span>
-                </a>
-            </li>
-
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dropdown Navbar</title>
+    <link rel="stylesheet" href="/css/dashboard.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <ul class="navbar-menu">
+          <li class="navbar-item">
+            <a href="/dashboard.html">Home</a>
+          </li>
+          <li class="navbar-item dropdown">
+            <a href="#">Funcionários</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="#">Novo Funcionário</a></li>
+              <li class="dropdown-item"><a href="#">Pesquisar Funcionário</a></li>
+              <li class="dropdown-item"><a href="#">Cadastros Inativos</a></li>
+            </ul>
+          </li>
+          <li class="navbar-item dropdown">
+            <a href="#">Solicitação</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="#">Nova Solicitação</a></li>
+              <li class="dropdown-item"><a href="#">Buscar Solicitação</a></li>
+            </ul>
+          </li>
+          <li class="navbar-item dropdown">
+            <a href="#">Atendimento</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="#">Novo Atendimento</a></li>
+              <li class="dropdown-item"><a href="#">Buscar Atendimento</a></li>
+            </ul>
+          </li>
+          <li class="navbar-item dropdown">
+            <a href="#">Ajustes do Sistema</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="#">Países</a></li>
+              <li class="dropdown-item"><a href="#">Estados</a></li>
+              <li class="dropdown-item"><a href="#">Cidades</a></li>
+              <li class="dropdown-item"><a href="#">Setores</a></li>
+              <li class="dropdown-item"><a href="#">Filiais</a></li>
+              <li class="dropdown-item"><a href="#">Tipo Atendimento</a></li>
+              <li class="dropdown-item"><a href="#">Tipo Solicitação</a></li>
+              <li class="dropdown-item"><a href="#">Permissões</a></li>
+            </ul>
+          </li>
         </ul>
+        
+      </nav>
 
-
-    </nav>
-    
-</body>
+      <div class="btn-sair">
+        <a href="/login.html">Sair</a>
+      </div>
+    </header>
+  </body>
 </html>

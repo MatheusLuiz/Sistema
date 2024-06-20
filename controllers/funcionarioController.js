@@ -7,7 +7,7 @@ const createFuncionario = async (req, res) => {
         await Log.create({
             tabela_afetada: 'funcionarios',
             acao_realizada: 'CREATE',
-            id_registro_afetado: newFuncionario.insertId,
+            id_registro_afetado: newFuncionario.matricula,
             id_funcionario_editor: req.body.id_funcionario_editor,
             dados_novos: JSON.stringify(req.body)
         });
@@ -47,7 +47,7 @@ const updateFuncionario = async (req, res) => {
             dados_antigos: JSON.stringify(oldFuncionario),
             dados_novos: JSON.stringify(req.body)
         });
-        res.status(200).json({ message: 'Funcionario updated successfully' });
+        res.status(200).json({ message: 'Funcionário atualizado com sucesso' });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -64,7 +64,7 @@ const deleteFuncionario = async (req, res) => {
             id_funcionario_editor: req.body.id_funcionario_editor,
             dados_antigos: JSON.stringify(oldFuncionario)
         });
-        res.status(200).json({ message: 'Funcionario deleted successfully' });
+        res.status(200).json({ message: 'Funcionário excluído com sucesso' });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

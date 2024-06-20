@@ -1,10 +1,14 @@
 const db = require('../config/banco');
 
-class User {
-    static async findByUsername(username) {
+async function findByUsername(username) {
+    try {
         const [rows] = await db.query('SELECT * FROM logins WHERE username = ?', [username]);
-        return rows[0];
+        return rows[0]; 
+    } catch (error) {
+        throw error;
     }
 }
 
-module.exports = User;
+module.exports = {
+    findByUsername
+};
