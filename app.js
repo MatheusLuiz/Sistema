@@ -22,6 +22,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'logout.html'));
 });
 
+app.get('/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+});
+
 app.post('/login', authController.login);
 
 app.use('/dashboard', dashboardRoutes);

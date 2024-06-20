@@ -16,6 +16,7 @@
     "bootstrap-icons": "^1.11.3",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "fetch": "^1.1.0",
     "mysql2": "^3.10.1",
     "nodemon": "^3.1.3"
   }
