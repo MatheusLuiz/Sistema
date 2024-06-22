@@ -1,16 +1,9 @@
 const db = require('../config/banco');
 
-const User = {
-    findByUsernameAndPassword: function(username, password) {
-        return new Promise((resolve, reject) => {
-            db.query('SELECT username, sennha FROM logins WHERE username = ? AND senha  = ?', [username, password], (err, results) => {
-                if (err) {
-                    return reject(err);
-                }
-                resolve(results[0]); 
-            });
-        });
-    }
-};
+async function findByUsernameAndPassword(username, password) {
+    const query = 'SELECT username, senha FROM users WHERE username = ? AND senha = ?';
+    const [rows] = await pool.execute(query, [username, password]);
+    return rows[0];
+}
 
-module.exports = User;
+module.exports = { findByUsernameAndPassword };

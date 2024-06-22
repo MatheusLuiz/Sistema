@@ -1,36 +1,21 @@
-document.getElementById('login-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const usernameInput = document.getElementById('username');
-    const userpasswordInput = document.getElementById('password');
-    const usernameValue = usernameInput.value; 
-
+exports.login = async (req, res) => {
     try {
-        const response = await fetch('/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ username: usernameValue, password: userpasswordInput.value })
-        });
+        const { username, password } = req.body;
+        console.log(`Tentativa de login com usuário: ${username}`);
 
-        const contentType = response.headers.get('content-type');
+        const user = await findByUsernameAndPassword(username, password);
+        console.log(`Usuário encontrado: ${user ? user.username : 'Nenhum'}`);
 
-        if (contentType && contentType.includes('application/json')) {
-            const data = await response.json();
-            if (response.ok) {
-                window.location.href = '/dashboard.html';
-            } else {
-                document.getElementById('error-message').innerText = data.message || 'Erro ao fazer login';
-            }
+        if (user && user.username === username && user.senha === password) {
+            console.log("Passou aqui");
+            res.redirect('/dashboard');
         } else {
-            document.getElementById('error-message').innerText = 'Resposta inválida do servidor';
+            console.log("Credenciais inválidas ou usuário não existe");
+            res.status(401).json({ message: 'Credenciais inválidas ou usuário não existe' });
         }
     } catch (error) {
-        console.error('Erro ao fazer login:', error);
-        document.getElementById('error-message').innerText = 'Erro ao fazer login';
+        console.error('Erro ao autenticar usuário:', error);
+        res.status(500).json({ message: 'Erro interno no servidor' });
     }
+};
 
-    setTimeout(function() {
-        window.location.href = "/login.html"; 
-    }, 3000);
-});

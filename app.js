@@ -3,33 +3,40 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const authRoutes = require('./routes/loginRoute'); 
 const dashboardRoutes = require('./routes/dashboardRoute'); 
-const authController = require('./controllers/authController'); 
 const funcionarioRoutes = require('./routes/funcionarioRoute'); 
-
 
 const app = express();
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'views')));
 
+// Middleware para definir a pasta views e o mecanismo de template
+app.set('views', path.join(__dirname, 'views'));
+
+// Usando as rotas
+app.use('/', authRoutes);
+app.use('/dashboard', dashboardRoutes);
+app.use('/funcionario', funcionarioRoutes);
+
+// Página inicial
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'login.html'));
 });
 
-app.get('/', (req, res) => {
+// Página de logout 
+app.get('/logout', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'logout.html'));
 });
 
+// Rota de dashboard
 app.get('/dashboard', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+    res.sendFile(path.join(__dirname, 'views', 'dashboard.html'));
 });
 
-app.post('/login', authController.login);
-
-app.use('/dashboard', dashboardRoutes);
-
+// Middleware para tratar 404
 app.use((req, res, next) => {
     res.status(404).send('Página não encontrada');
 });
