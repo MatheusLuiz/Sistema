@@ -15,6 +15,7 @@ app.use(express.static(path.join(__dirname, 'views')));
 
 // Middleware para definir a pasta views e o mecanismo de template
 app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 // Usando as rotas
 app.use('/', authRoutes);
