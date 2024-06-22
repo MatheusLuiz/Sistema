@@ -6,8 +6,9 @@ exports.login = async (req, res) => {
 
         const user = await findByUsernameAndPassword(username, password);
 
-        if (user) {
-            res.redirect('/dashboard.html'); // Redireciona se as credenciais forem válidas
+        if (user.username == username && user.password == password) {
+            console.log("passou aqui")
+            res.redirect('/dashboard.html');
         } else {
             res.status(401).json({ message: 'Credenciais inválidas ou usuário não existe' });
         }

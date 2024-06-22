@@ -10,7 +10,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ username, password: senha })
+            body: JSON.stringify({ username: usernameValue, password: userpasswordInput.value })
         });
 
         const contentType = response.headers.get('content-type');
