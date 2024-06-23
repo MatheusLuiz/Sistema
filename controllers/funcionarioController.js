@@ -1,27 +1,14 @@
 const Funcionario = require('../models/funcionarioModel');
-const Log = require('../models/logModel');
-
-const createFuncionario = async (req, res) => {
-    try {
-        const newFuncionario = await Funcionario.create(req.body);
-        await Log.create({
-            tabela_afetada: 'funcionarios',
-            acao_realizada: 'CREATE',
-            id_registro_afetado: newFuncionario.matricula,
-            id_funcionario_editor: req.body.id_funcionario_editor,
-            dados_novos: JSON.stringify(req.body)
-        });
-        res.status(201).json(newFuncionario);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-};
 
 const getFuncionarioById = async (req, res) => {
     try {
         const funcionario = await Funcionario.findById(req.params.matricula);
+        if (!funcionario) {
+            return res.status(404).json({ error: 'Funcionário não encontrado' });
+        }
         res.status(200).json(funcionario);
     } catch (error) {
+        console.error('Erro ao buscar funcionário por matrícula:', error.message);
         res.status(500).json({ error: error.message });
     }
 };
@@ -31,41 +18,56 @@ const getAllFuncionarios = async (req, res) => {
         const funcionarios = await Funcionario.findAll();
         res.status(200).json(funcionarios);
     } catch (error) {
+        console.error('Erro ao buscar todos os funcionários:', error.message);
         res.status(500).json({ error: error.message });
     }
 };
 
-const updateFuncionario = async (req, res) => {
+const createFuncionario = async (req, res) => {
     try {
-        const oldFuncionario = await Funcionario.findById(req.params.matricula);
-        await Funcionario.update(req.params.matricula, req.body);
-        await Log.create({
-            tabela_afetada: 'funcionarios',
-            acao_realizada: 'UPDATE',
-            id_registro_afetado: req.params.matricula,
-            id_funcionario_editor: req.body.id_funcionario_editor,
-            dados_antigos: JSON.stringify(oldFuncionario),
-            dados_novos: JSON.stringify(req.body)
-        });
-        res.status(200).json({ message: 'Funcionário atualizado com sucesso' });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-};
+        // Verifica se todos os campos necessários estão presentes em req.body
+        const { matricula, nome } = req.body;
 
-const deleteFuncionario = async (req, res) => {
-    try {
-        const oldFuncionario = await Funcionario.findById(req.params.matricula);
-        await Funcionario.delete(req.params.matricula);
-        await Log.create({
-            tabela_afetada: 'funcionarios',
-            acao_realizada: 'DELETE',
-            id_registro_afetado: req.params.matricula,
-            id_funcionario_editor: req.body.id_funcionario_editor,
-            dados_antigos: JSON.stringify(oldFuncionario)
+        if (!nome || !matricula) {
+            return res.status(400).json({ error: 'Todos os campos obrigatórios devem ser preenchidos: nome, matricula' });
+        }
+
+        // Extrai todos os campos do req.body, garantindo que apenas os campos necessários sejam passados
+        const {
+            sobrenome,
+            cpf,
+            rg,
+            data_nascimento,
+            estado_civil,
+            cnh,
+            status,
+            data_cadastro,
+            id_cargo,
+            id_setor,
+            id_filial // Qualquer outro campo não listado acima será capturado aqui
+        } = req.body;
+
+        // Cria um novo funcionário no banco de dados
+        const newFuncionario = await Funcionario.create({
+            matricula,
+            nome,
+            sobrenome,
+            cpf,
+            rg,
+            data_nascimento,
+            estado_civil,
+            cnh,
+            status,
+            data_cadastro,
+            id_cargo,
+            id_setor,
+            id_filial // Inclui outros dados capturados
         });
-        res.status(200).json({ message: 'Funcionário excluído com sucesso' });
+
+        // Retorna o novo funcionário criado
+        res.status(201).json(newFuncionario);
     } catch (error) {
+        console.error('Erro ao criar funcionário:', error.message);
         res.status(500).json({ error: error.message });
     }
 };
@@ -73,7 +75,5 @@ const deleteFuncionario = async (req, res) => {
 module.exports = {
     createFuncionario,
     getFuncionarioById,
-    getAllFuncionarios,
-    updateFuncionario,
-    deleteFuncionario
+    getAllFuncionarios
 };

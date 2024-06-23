@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <title>Novo Funcionario</title>
+    <link rel="stylesheet" href="/css/dashboard.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-menu-container">
+              <ul class="navbar-menu">
+                  <li class="navbar-item">
+                      <a href="/dashboard.html">Home</a>
+                  </li>
+                  <li class="navbar-item dropdown">
+                      <a href="#">Funcionários</a>
+                      <ul class="dropdown-menu">
+                          <li class="dropdown-item"><a href="/novofuncionario.html">Novo Funcionário</a></li>
+                          <li class="dropdown-item"><a href="#">Pesquisar Funcionário</a></li>
+                          <li class="dropdown-item"><a href="#">Cadastros Inativos</a></li>
+                      </ul>
+                  </li>
+                  <li class="navbar-item dropdown">
+                      <a href="#">Solicitação</a>
+                      <ul class="dropdown-menu">
+                          <li class="dropdown-item"><a href="#">Nova Solicitação</a></li>
+                          <li class="dropdown-item"><a href="#">Buscar Solicitação</a></li>
+                      </ul>
+                  </li>
+                  <li class="navbar-item dropdown">
+                      <a href="#">Atendimento</a>
+                      <ul class="dropdown-menu">
+                          <li class="dropdown-item"><a href="#">Novo Atendimento</a></li>
+                          <li class="dropdown-item"><a href="#">Buscar Atendimento</a></li>
+                      </ul>
+                  </li>
+                  <li class="navbar-item dropdown">
+                      <a href="#">Ajustes do Sistema</a>
+                      <ul class="dropdown-menu">
+                          <li class="dropdown-item"><a href="#">Paises</a></li>
+                          <li class="dropdown-item"><a href="#">Estados</a></li>
+                          <li class="dropdown-item"><a href="#">Cidades</a></li>
+                          <li class="dropdown-item"><a href="#">Setores</a></li>
+                          <li class="dropdown-item"><a href="#">Filiais</a></li>
+                          <li class="dropdown-item"><a href="#">Tipo Atendimento</a></li>
+                          <li class="dropdown-item"><a href="#">Tipo Solicitação</a></li>
+                          <li class="dropdown-item"><a href="#">Permissões</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+          <div class="btn-sair">
+              <a href="/logout.html">Sair</a>
+          </div>
+      </nav>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <form class="text-center" action="/funcionario" method="POST">
+                    <div class="col-md-12 mt-1">
+                        <label class="form-label" for="matricula">Numero da Matricula</label>
+                        <input class="form-control" name="matricula" type="number" required>
+                    </div>
+                    <div class="col-md-12 mt-1">
+                        <label class="form-label" for="nome">Nome do Funcionario</label>
+                        <input class="form-control" name="nome" type="text" required>
+                    </div>
+                    <div class="col-md-12 mt-1">
+                        <label class="form-label" for="sobrenome">Sobrenome do Funcionario</label>
+                        <input class="form-control" name="sobrenome" type="text" required>
+                    </div>
+                    <div class="col-md-12 mt-1">
+                        <label class="form-label" for="cpf">CPF</label>
+                        <input class="form-control" name="cpf" type="text" required>
+                    </div>
+                    <div class="col-md-12 mt-1">
+                        <label class="form-label" for="rg">RG</label>
+                        <input class="form-control" name="rg" type="text" required>
+                    </div>
+                    <div class="col-md-12 mt-1">
+                        <label class="form-label" for="data_nascimento">Data de Nascimento</label>
+                        <input class="form-control text-center" name="data_nascimento" type="date" required>
+                    </div>
+                    <div class="col-md-12 mt-1">
+                        <label class="form-label" for="estado_civil">Estado Civil</label>
+                        <select class="form-select text-center" name="estado_civil" aria-label="Default select example">
+                            <option selected></option>
+                            <option value="solteiro">Solteiro</option>
+                            <option value="casado">Casado</option>
+                            <option value="viuvo">Viuvo</option>
+                            <option value="pinto">Pintudo</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 mt-1">
+                        <label class="form-label" for="cnh">CNH</label>
+                        <input class="form-control" name="cnh" type="text" required>
+                    </div>
+                    <div class="col-md-12 mt-1">
+                        <label class="form-label" for="status">Status</label>
+                        <select class="form-select text-center" name="status" aria-label="Default select example">
+                            <option selected>Escolha opção</option>
+                            <option value="ativo">Ativo</option>
+                            <option value="inativo">Inativo</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 mt-1">
+                        <label class="form-label" for="data_cadastro">Data de Cadastro</label>
+                        <input class="form-control text-center" name="data_cadastro" type="date" required>
+                    </div>
+                    <div class="col-md-12 mt-1">
+                        <label class="form-label" for="id_cargo">ID Cargo</label>
+                        <input class="form-control" name="id_cargo" type="number" required>
+                    </div>
+                    <div class="col-md-12 mt-1">
+                        <label class="form-label" for="id_setor">ID Setor</label>
+                        <input class="form-control" name="id_setor" type="number" required>
+                    </div>
+                    <div class="col-md-12 mt-1">
+                        <label class="form-label" for="id_filial">ID Filial</label>
+                        <input class="form-control" name="id_filial" type="number" required>
+                    </div>
+                    <div class="col-md-12 mt-4 text-end">
+                        <button type="submit" class="btn btn-primary mb-3">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <script src="/models/funcionarioModel.js"></script>
+</body>
+</html>

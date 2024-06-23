@@ -10,7 +10,7 @@ exports.login = async (req, res) => {
 
         if (user && user.username === username && user.senha === password) {
             console.log("Passou aqui");
-            res.redirect('dashboard');
+            res.redirect('/dashboard.html');
         } else {
             console.log("Credenciais inválidas ou usuário não existe");
             res.status(401).json({ message: 'Credenciais inválidas ou usuário não existe' });

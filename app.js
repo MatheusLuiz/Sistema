@@ -2,8 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const authRoutes = require('./routes/loginRoute'); 
-const dashboardRoutes = require('./routes/dashboardRoute'); 
-const funcionarioRoutes = require('./routes/funcionarioRoute'); 
+const dashboardRoutes = require('./routes/dashboardRoute');  
+const funcionarioRoute = require('./routes/funcionarioRoute');
 
 const app = express();
 
@@ -20,7 +20,7 @@ app.set('view engine', 'ejs');
 // Usando as rotas
 app.use('/', authRoutes);
 app.use('/dashboard', dashboardRoutes);
-app.use('/funcionario', funcionarioRoutes);
+app.use('/funcionario', funcionarioRoute);
 
 // Página inicial
 app.get('/', (req, res) => {
